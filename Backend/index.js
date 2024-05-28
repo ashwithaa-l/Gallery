@@ -1,4 +1,4 @@
-const dotenv=require('dotenv').config();
+require('dotenv').config();
 const mongoose=require('mongoose');
 const express=require('express');
 const bodyParser=require('body-parser');
@@ -13,18 +13,15 @@ app.use(bodyParser.json());
 app.listen(8000,function(){
     console.log('listening on port 8000');
 });
+
 try{
-async function connectdb(){
-        await mongoose.connect(process.env.MONGO_URL);
-        console.log("connected db");
-        }}
-        catch(error){
-            console.log(error);
-            console.log("could'nt connect");
-    }
-
-
-connectdb();
-
+   const connectdb = async ()=>{
+        await mongoose.connect(process.env.MONGO_URL)
+        console.log('Connected to database');
+   }
+   connectdb()
+}catch(err){
+    console.log(err.message);
+}
 app.use('/users',userRoutes);
 
