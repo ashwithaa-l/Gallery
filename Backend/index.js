@@ -5,6 +5,8 @@ const bodyParser=require('body-parser');
 const cors=require('cors');
 const app=express();
 
+const userRoutes=require('./routes/userRoutes');
+
 app.use(cors())
 app.use(bodyParser.json());
 
@@ -18,9 +20,10 @@ async function connectdb(){
         console.log("connected db");
         }
         catch(error){
-console.log(error);
-console.log("could'nt connect");
+            console.log(error);
+            console.log("could'nt connect");
     }
 }
 
-connectdb();
+app.use('/users',userRoutes);
+
