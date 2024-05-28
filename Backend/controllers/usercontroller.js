@@ -1,7 +1,7 @@
 
 const bcrypt = require('bcrypt');
 const {generateToken} = require('../utils/Token')
-
+const {User}=require('../models/userSchema');
 
 
 const login = async (req,res)=>{
