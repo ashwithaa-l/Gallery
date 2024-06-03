@@ -1,6 +1,6 @@
 
 const bcrypt = require('bcrypt');
-const {generateToken} = require('../utils/Token')
+const generateToken = require('../utils/Token')
 const {User}=require('../models/userSchema');
 
 
@@ -19,7 +19,8 @@ const login = async (req,res)=>{
         if(!isValid){
             return res.status(400).json({message:"Invalid credentials"});
         }
-        const token = generateToken(username,email);
+        const token = generateToken(doc.username,doc.email);
+        console.log(token)
         return res.status(200).json({error:false,message:{token:token}});
     }catch(err){
        return res.status(401).json({error:true,message:'Login Failed'})
@@ -36,11 +37,12 @@ const signup = async(req,res)=>{
         if(!username || !email || !password){
             return res.status(400).json({message:"All fields are required"});
         }
-        const user = await User.findOne({username:username});
+        
+        const user = await User.findOne({ $or: [{ username }, { email }] });
         if(user){
             return res.status(400).json({message:"User already exists"});
         }
-        const hashPassword = bcrypt.hash(password,10);
+        const hashPassword = await bcrypt.hash(password,10);
         const newUser = new User({
             username:username,
             email:email,

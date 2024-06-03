@@ -1,10 +1,10 @@
 
-const { raw } = require('body-parser')
+// const { raw } = require('body-parser')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv').config();
 
 
-const generateToken =  async(username,email)=>{
+const generateToken = (username,email)=>{
    try{
       const token = jwt.sign(
         {username,email},
@@ -18,4 +18,4 @@ const generateToken =  async(username,email)=>{
    }
 }
 
-module.exports = {generateToken}
+module.exports = generateToken;
