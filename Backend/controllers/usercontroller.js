@@ -19,7 +19,7 @@ const login = async (req,res)=>{
         if(!isValid){
             return res.status(400).json({message:"Invalid credentials"});
         }
-        const token = generateToken(doc.username,doc.email);
+        const token = await generateToken(doc.username,doc.email);
         console.log(token)
         return res.status(200).json({error:false,message:{token:token}});
     }catch(err){
@@ -38,8 +38,8 @@ const signup = async (req, res) => {
             return res.status(400).json({ message: "All fields are required" });
         }
         const user = await User.findOne({ $or: [{ username }, { email }] });
-        if(user){
-            return res.status(400).json({message:"User already exists"});
+        if (user) {
+            return res.status(400).json({ message: "Username or email already exists" });
         }
         const hashPassword = await bcrypt.hash(password,10);
         const newUser = new User({

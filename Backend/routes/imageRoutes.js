@@ -1,5 +1,5 @@
 const router  = require('express').Router();
-const {addImage} = require('../controllers/imagecontroller');
+const {addImage , getImages, getUserimages} = require('../controllers/imagecontroller');
 const multer = require('multer');
 const { checkUser } = require('../middlewares/auth');
 
@@ -15,6 +15,10 @@ const storage = multer.diskStorage({
 
 const uploads = multer({ storage: storage });
 
-router.post('/uploads',checkUser,uploads.single('image'),addImage);
+router.post('/uploads',uploads.single('image'),addImage);
+
+router.get('/getImages',checkUser,getImages);
+
+router.get('/getUserimages',checkUser,getUserimages)
 
 module.exports = router;

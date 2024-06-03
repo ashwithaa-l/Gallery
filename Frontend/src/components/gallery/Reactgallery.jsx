@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './gallery.css';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
@@ -13,7 +13,7 @@ const images = [
 
 const Reactgallery = () => {
   return (
-    <>
+    <div className='gallery-container'>
       <h1>Images</h1>
        <ResponsiveMasonry
          columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
@@ -29,7 +29,7 @@ const Reactgallery = () => {
           ))}
         </Masonry>
       </ResponsiveMasonry>
-    </>
+    </div>
   );
 }
 

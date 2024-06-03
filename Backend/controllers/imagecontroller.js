@@ -1,3 +1,4 @@
+
 const {Image} = require('../models/imageSchema')
 
 
@@ -28,6 +29,7 @@ const addImage = async(req,res)=>{
             username:req.user.username
         });
         await newImage.save();
+        console.log('Image created',image)
         return res.status(201).json({error:false,message:'Image added successfully'})
       }
    }catch(err){
@@ -35,4 +37,23 @@ const addImage = async(req,res)=>{
    }
 }
 
-module.exports = {addImage};
+
+const getImages = async(req,res) =>{
+     try{
+      const images = await Image.find({})
+      return res.status(200).json({message:images})
+     }catch(err){
+      return res.status(500).json({ error: true, message: err.message });
+     }
+}
+
+const getUserimages = async(req,res)=>{
+   try{
+      const images = await Image.find({username:req.user.username});
+      return res.status(200).json({message:images})
+   }catch(err){
+      return res.status(500).json({ error: true, message: err.message })
+   }
+}
+
+module.exports = {addImage,getImages,getUserimages};
