@@ -8,18 +8,19 @@ import Signup from './components/auth/Signup.jsx'
 import Reactgallery from './components/gallery/Reactgallery.jsx'
 const router=createBrowserRouter([
 {
-  path:'/Login',
+  path:'/login',
   element:<Login/>
 },{
-  path:'/Signup',
+  path:'/signup',
   element:<Signup/>
 },{
-  path:'/Reactgallery',
+  path:'/reactgallery',
   element:<Reactgallery/>
 }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>,
 )
+
