@@ -13,10 +13,10 @@ const images = [
 
 const Reactgallery = () => {
   return (
-    <>
+    <div className='gallery-container'>
       <h1>Images</h1>
        <ResponsiveMasonry
-         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+         columnsCountBreakPoints={{ 350: 5, 750: 7, 900:3}}
       >
         <Masonry>
           {images.map((image, i) => (
@@ -29,7 +29,7 @@ const Reactgallery = () => {
           ))}
         </Masonry>
       </ResponsiveMasonry>
-    </>
+    </div>
   );
 }
 
