@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import './gallery.css';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const images = [
   "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
@@ -11,7 +13,7 @@ const images = [
 ];
 
 const Reactgallery = () => {
-  const navigate = useNavigate();
+  const [images,setImages] = useState([]);
 
   function getCookieValue(name) {
     const cookies = document.cookie.split(';');
@@ -25,10 +27,24 @@ const Reactgallery = () => {
   }
 
   const token = getCookieValue('token');
-
-  if (!token) {
-    navigate('/login');
+  
+  const getImages = async()=>{
+    try{
+       const res = await axios.get(`${import.meta.env.VITE_BASE_URL}images/getImages`,{
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type":'application/json'
+        },
+       })
+       setImages(res.data.message)
+    }catch(err){
+        console.log(err);
+    }
   }
+
+  useEffect(()=>{
+    getImages();
+  },[])
 
   return (
     <div className='gallery-container'>
@@ -46,7 +62,7 @@ const Reactgallery = () => {
           {images.map((image, i) => (
             <img
               key={i}
-              src={image}
+              src={image.image}
               className="gallery-image"
               alt={`gallery-img-${i}`}
             />
