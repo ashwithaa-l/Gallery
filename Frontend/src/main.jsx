@@ -6,6 +6,7 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Login from './components/auth/Login.jsx'
 import Signup from './components/auth/Signup.jsx'
 import Reactgallery from './components/gallery/Reactgallery.jsx'
+import Upload from './components/profile/Upload.jsx'
 const router=createBrowserRouter([
 {
   path:'/Login',
@@ -16,6 +17,9 @@ const router=createBrowserRouter([
  },{
   path:'/Reactgallery',
   element:<Reactgallery/>
+},{
+  path:'/upload',
+  element:<Upload></Upload>
 }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
