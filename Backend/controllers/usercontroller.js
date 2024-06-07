@@ -48,7 +48,8 @@ const signup = async (req, res) => {
             password: hashPassword
         });
         await newUser.save();
-        return res.status(201).json({ error: false, message: 'User created successfully' });
+        const token = await generateToken(newUser.username,newUser.email);
+        return res.status(201).json({ error: false, message: { token: token } });
     } catch (err) {
         console.error('User creation failed:', err);
         return res.status(500).json({ message: "User creation failed, please try again later" });
