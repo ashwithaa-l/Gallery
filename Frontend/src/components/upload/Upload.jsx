@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
-import './profile.css';
+import './upload.css';
 import axios from 'axios';
+import { useNavigate} from 'react-router-dom';
 
 const Upload = () => {
     const [title, setTitle] = useState('');
@@ -19,6 +20,11 @@ const Upload = () => {
     }
 
     const token = getCookieValue('token');
+    const navigate = useNavigate();
+
+    if(!token){
+        navigate('/login');
+    }
 
     const handleAdd = async () => {
 
