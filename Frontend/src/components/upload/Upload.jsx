@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react';
-import './profile.css';
+import './upload.css';
 import axios from 'axios';
+import { useNavigate} from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Upload = () => {
     const [title, setTitle] = useState('');
@@ -19,6 +22,11 @@ const Upload = () => {
     }
 
     const token = getCookieValue('token');
+    const navigate = useNavigate();
+
+    if(!token){
+        navigate('/login');
+    }
 
     const handleAdd = async () => {
 
@@ -39,6 +47,8 @@ const Upload = () => {
               console.log('res',res)
             }
             console.log(res);
+            toast.success('Image Added Successfully !')
+            navigate('/reactgallery');
         } catch (err) {
             console.log(err.message);
         }
@@ -77,7 +87,8 @@ const Upload = () => {
                     onChange={handleImageChange}
                 />
             </div>
-            <button onClick={handleAdd}>Add Image</button>
+            <button className={{'cursor':'pointer'}} onClick={handleAdd}>Add Image</button>
+            <Toaster/>
         </div>
     );
 };

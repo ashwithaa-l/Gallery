@@ -1,9 +1,9 @@
 
-import { useNavigate } from 'react-router-dom';
-import './App.css'
+import { Outlet, useNavigate } from 'react-router-dom';
+import Navbar from '../navbar'
 
-function App() {
 
+const HomeLayout = () => {
   function getCookieValue(name) {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
@@ -13,18 +13,20 @@ function App() {
         }
     }
     return null;
-}
+  }
 
-const token = getCookieValue('token');
-const navigate = useNavigate();
+  const token = getCookieValue('token');
+  const navigate = useNavigate();
 
-if(!token){
+  if (!token) {
     navigate('/login');
-}
+  }
   return (
-    <>
-    </>
+    <div>
+        <Navbar></Navbar>
+        <Outlet/>
+    </div>
   )
 }
 
-export default App
+export default HomeLayout;

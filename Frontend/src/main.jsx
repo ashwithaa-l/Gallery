@@ -6,20 +6,33 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Login from './components/auth/Login.jsx'
 import Signup from './components/auth/Signup.jsx'
 import Reactgallery from './components/gallery/Reactgallery.jsx'
-import Upload from './components/profile/Upload.jsx'
+import Upload from './components/upload/Upload.jsx'
+import HomeLayout from './components/layout/homeLayout.jsx'
+import Profile from './components/profile/Profile.jsx'
 const router=createBrowserRouter([
+  {
+    path:'/',
+    element:<HomeLayout/>,
+    children:[
+    {
+      path:'/reactgallery',
+      element:<Reactgallery/>
+    },{
+      path:'/upload',
+      element:<Upload></Upload>
+    },
+  {
+    path:'/profile',
+    element:<Profile/>
+  
+  }]
+  },
 {
   path:'/Login',
   element:<Login/>
 },{
   path:'/Signup',
   element:<Signup/>
- },{
-  path:'/Reactgallery',
-  element:<Reactgallery/>
-},{
-  path:'/upload',
-  element:<Upload></Upload>
 }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(

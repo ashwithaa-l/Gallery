@@ -33,6 +33,7 @@ const addImage = async(req,res)=>{
         return res.status(201).json({error:false,message:'Image added successfully'})
       }
    }catch(err){
+      console.log(err.message)
     return res.status(500).json({ error: true, message: err.message });
    }
 }

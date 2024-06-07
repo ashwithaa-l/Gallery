@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { useState } from 'react';
-import './Login.css';
-import { FaUser, FaLock } from "react-icons/fa";
+import './auth.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -42,37 +42,37 @@ const Login = () => {
     };
 
     return (
-        <div className='form-container'>
-            <div className="first">
-                <form onSubmit={handleLogin}>
-                    <h1>LOGIN</h1>
-                    <div className='input'>
-                        <input
-                            type="text"
-                            placeholder='Username'
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                        <FaUser className='icon' />
-                    </div>
-                    <div className='input'>
-                        <input
-                            type="password"
-                            placeholder='Password'
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <FaLock className='icon' />
-                    </div>
-
-                    <button type='submit'>Login</button>
-                    <div className='register'>
-                        <p>Don't have an account? <button type="button" onClick={toSignup}>Register</button></p>
-                    </div>
-                </form>
-            </div>
-            <Toaster />
-        </div>
+       <div className='login-page'>
+         <div className="container">
+  <div className="heading">Sign In</div>
+  <form className="form" onSubmit={handleLogin}>
+    <input
+      placeholder="Username"
+      id="username"
+      name="username"
+      type="text"
+      className="input"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+      required
+    />
+    <input
+      placeholder="Password"
+      id="password"
+      name="password"
+      type="password"
+      className="input"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+   
+    <input value="Sign In" type="submit" className="login-button" />
+  </form>
+  <span className="agreement">Don't have an account ?<button className="toRegister" onClick={toSignup}>Register</button></span>
+  <Toaster />
+</div>
+       </div>
     );
 }
 
