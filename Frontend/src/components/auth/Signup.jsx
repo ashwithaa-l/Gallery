@@ -20,7 +20,7 @@ const Signup = () => {
                 password,
                 email
             });
-
+    
             if (res.status === 201) {
                 console.log(res.data);
                 document.cookie = `token=${res.data.message.token}`;
@@ -56,9 +56,9 @@ const Signup = () => {
                     />
                          <input
                         placeholder="Email"
-                        id="password"
-                        name="password"
-                        type="password"
+                        id="email"
+                        name="email"
+                        type="email"
                         className="input"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}

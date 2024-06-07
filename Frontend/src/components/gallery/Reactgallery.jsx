@@ -1,16 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+
 import './gallery.css';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const images = [
-  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-  "https://images.unsplash.com/photo-1482235225574-c37692835cf3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-  "https://images.unsplash.com/photo-1482235225574-c37692835cf3?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-  "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-];
 
 const Reactgallery = () => {
   const [images,setImages] = useState([]);
