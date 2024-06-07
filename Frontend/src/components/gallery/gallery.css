@@ -1,3 +1,4 @@
+
 .gallery-container {
     padding: 20px;
     height: 1vh;
@@ -30,3 +31,4 @@
 .gallery-image:hover {
     transform: scale(1.01);
 }
+

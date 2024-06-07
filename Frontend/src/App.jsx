@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import './App.css'
-// import Signup from './components/Signup'; 
+
 function App() {
 
   function getCookieValue(name) {
@@ -23,7 +23,6 @@ if(!token){
 }
   return (
     <>
-      
     </>
   )
 }
