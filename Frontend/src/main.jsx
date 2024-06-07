@@ -7,6 +7,7 @@ import Signup from './components/auth/Signup.jsx'
 import Reactgallery from './components/gallery/Reactgallery.jsx'
 import Upload from './components/upload/Upload.jsx'
 import HomeLayout from './components/layout/homeLayout.jsx'
+import Profile from './components/profile/Profile.jsx'
 const router=createBrowserRouter([
   {
     path:'/',
@@ -18,7 +19,12 @@ const router=createBrowserRouter([
     },{
       path:'/upload',
       element:<Upload></Upload>
-    }]
+    },
+  {
+    path:'/profile',
+    element:<Profile/>
+  
+  }]
   },
 {
   path:'/login',

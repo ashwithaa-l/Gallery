@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './styles/navbar.css';
 import { FaChalkboardUser } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
@@ -44,14 +44,18 @@ const navbar = () => {
          getuser();
     },[])
 
+    const navigate = useNavigate();
 
+   const toProfile=()=>{
+    navigate('/profile');
+   }
 
   return (
     <div className='nav-container'>
       <h1><Link to='/reactgallery'>Image Gallery</Link></h1>
       <ul className='nav-group'>
         <li className="upload-button"><Link to='/upload'>Upload</Link></li>  
-        <li className='nav-profile'>
+        <li className='nav-profile' onClick={()=>{toProfile()}}>
           <FaChalkboardUser className='nav-profile-icon'></FaChalkboardUser>
           <span className='nav-username'>{username}</span>
         </li>

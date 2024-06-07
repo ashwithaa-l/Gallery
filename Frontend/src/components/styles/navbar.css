@@ -59,8 +59,6 @@
     transform: scale(1.05);
 }
 
-
-
 .nav-group > li.upload-button > a {
     background-color: #ffffff;
     color: #0099ff;
@@ -79,6 +77,7 @@
     background-color: transparent;
 }
 .nav-profile {
+    cursor: pointer;
     display: flex;
     gap: 10px;
     align-items: center;
