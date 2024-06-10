@@ -25,7 +25,7 @@ const Profile = () => {
       const res = await axios.get(`${import.meta.env.VITE_BASE_URL}users/getUser`, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
       });
       setUsername(res.data.message.username);
