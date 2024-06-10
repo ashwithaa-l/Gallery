@@ -57,5 +57,16 @@ const getUserimages = async(req,res)=>{
    }
 }
 
+const deleteImage = async(req,res)=>{
+   try{
+      const title = req.body.title;
+      await Image.deleteOne({title:title});
+      console.log(title)
+      return res.status(200).json({error:false,message:'Image deleted successfully'})
+   }catch(err){
+      return res.status(500).json({ error: true, message: err.message })
+   }
+}
 
-module.exports = {addImage,getImages,getUserimages};
+module.exports = {addImage,getImages,getUserimages,deleteImage};
+

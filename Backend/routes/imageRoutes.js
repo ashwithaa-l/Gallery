@@ -1,5 +1,5 @@
 const router  = require('express').Router();
-const {addImage , getImages, getUserimages} = require('../controllers/imagecontroller');
+const {addImage , getImages, getUserimages, deleteImage} = require('../controllers/imagecontroller');
 const multer = require('multer');
 const { checkUser } = require('../middlewares/auth');
 
@@ -21,5 +21,7 @@ router.post('/uploads',uploads.single('image'),checkUser,addImage);
 router.get('/getImages',checkUser,getImages);
 
 router.get('/getUserimages',checkUser,getUserimages)
+
+router.post('/deleteImage',checkUser,deleteImage)
 
 module.exports = router;
