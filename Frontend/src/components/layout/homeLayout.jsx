@@ -18,7 +18,7 @@ const HomeLayout = () => {
   const token = getCookieValue('token');
   const navigate = useNavigate();
 
-  if (!token) {
+  if (token == undefined) {
     navigate('/login');
   }
   return (
